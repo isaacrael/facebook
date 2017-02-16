@@ -8,25 +8,51 @@ a sandbox in which to learn how to use the Facebook SDK
 
 import facebook
 
-graph = facebook.GraphAPI(access_token="EAACEdEose0cBAO53FdnJTHj0XZCjHlmN5GaNizI9UtEn39X5Jx2ZAwHHocxHntDbvt77DdaDDolNqmktZCp442u2IlUOvJJKgY0Y2wUA0BAFwTWPu0L1vbtP7JI97wZAbM0y4tN6heswMN0is09qSEr1PDUhK9VoWzSTyEp46a9hQO2xT3DZCZBhiZA4ypj4ZCgZD", version='2.2')
+graph = facebook.GraphAPI(access_token="EAACEdEose0cBAJ4ZCxvzRHcJdWNN1vc5S9Ioj3gCVPPgOWm8Elp2xZAv30NKLrjc78aLKtuACt2CCJWcVoXIzsFTHB0WtDciW54WPuqybVrcNw8YVKvJHsVIjUfYFOo1DRlkLyAJbCQltB0ZBleJcx0GXctEyWzwg3A8J48RZC6ZAqOgqPJQt8sg0PUi3hQwZD", version='2.7')
+user = graph.get_object("me")
+friends = graph.get_connections(user["id"], "friends")
+print(graph)
 
-friend = graph.get_object(id="1621685565")
-"""
-for item in friend:
-    print (friend.keys())
-    print (friend.values())
-"""
+for item in friends:
+    print(item)
 
-for key,val in friend.items():
+
+
+
+#friend = graph.get_object(id="1621685565")
+
+friends = graph.get_connections(id='me', connection_name='friends')
+
+
+
+for key,val in friends.items():
     print ((key), "=>", (val))
+
+
+
+
+"""
+for item in friends.items():
+    print (friends.keys())
+    print (friends.values())
+
+"""
+
+
+"""
 
 for hometown, name in friend.items():
     print(name)
 
-for employer, name in friend.items():
+for id, name in friends.items():
     print(name)
 
 
+me = graph.get_object(id='me')
+for id, name in me.items():
+    print(name)
+
+"""
 
 
 
@@ -40,7 +66,7 @@ Kathryn O'Neill id = 1621685565
 
 
 
-friends = graph.get_connections(id='me', connection_name='friends')
+
 #print(friends)
 """
 for friend in friends:
